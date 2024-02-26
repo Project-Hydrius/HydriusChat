@@ -1,0 +1,130 @@
+# General settings
+settings:
+  default-channel: 'global' # the default channel that players will be set to chat in when they join the server.
+  allow-channel-switching: true # allow players to switch channels
+  allow-channel-creation: true # allow players to create channels
+  allow-channel-joining: true # allow players to join channels
+  allow-channel-leaving: true # allow players to leave channels
+
+# Database settings
+database:
+  host: 'localhost' # the host of the database
+  port: 3306 # the port of the database
+  database: 'chat' # the name of the database
+  username: 'chat_user' # the username that can access the database
+  password: 'password' # the password of the user, for security reasons, it is recommended it is at least 16 characters long.
+
+# This lists pre-defined channels that players can join (will automatically join if permission is given)
+# These channels will be allowed on all servers.
+# Command created channels will only be allowed on the server pairs they were created on.
+# Command created channels will be cross server automatically.
+# It is recommended to bundle all your existing servers into a pair if applicable.
+channels:
+  'global': # The channel ID, must be unique.
+    name: 'Global' # The name of the channel.
+    alias: 'G' # The alias of the channel.
+    color: '&e' # the color of the channel name.
+    cross-server: true # whether the channel is cross-server.
+    requires-permission: false # whether the player must have the permission to join the channel.
+  'server':
+    name: 'Server'
+    alias: 'L'
+    color: '&a'
+    cross-server: false
+    requires-permission: false
+  'staff':
+    name: 'Staff'
+    alias: 'S'
+    color: '&c'
+    cross-server: true
+    requires-permission: true
+
+# The names that are not allowed to be used for channel creation
+# If your server creates a channel, it will bypass this list.
+banned-channel-names:
+  - 'global'
+  - 'server'
+  - 'staff'
+  - 'admin'
+  - 'owner'
+  - 'mod'
+  - 'moderator'
+  - 'helper'
+  - 'dev'
+  - 'developer'
+  - 'builder'
+  - 'build'
+  - 'buildteam'
+  - 'build-team'
+  - 'build team'
+  - 'buildteam'
+  - 'build team'
+  - 'dungeon'
+  - 'dungeons'
+  - 'raid'
+  - 'raids'
+
+# or called global-pairs, this is a list of servers that will be sent the message depending on the type of server the player is on.
+# if the player is in hub and sends a message, the message will be sent to the servers in the hub group. If you are using pterodactyl or
+# manage a cluster of servers, you should list the range of ports here.
+# Using localhost or 127.0.0.1 will just assume the address of the server the player is on.
+# So if you are using a host and cannot control addresses, you should use the different host addresses instead of localhost.
+pairs:
+  'hub':
+    - '127.0.0.1:25565'
+    - '127.0.0.1:25566'
+  'skyblock':
+    - '127.0.0.1:25567'
+    - '127.0.0.1:25568'
+groups:
+  'default':
+    weight: 0 # the weight of the group, the higher the weight, the higher the priority.
+    formats:
+      # If no server is specified, the default format will be used.
+      'default':
+        # You can name a component anything you want, as long as it is unique.
+        # The format will build the message in the order of the components.
+        components:
+          server: "&7[&a{server_name}&7] "
+          channel: "&7[{channel_name}&7] "
+          rank: "&7[%luckperms_prefix%&7] "
+          name: "&7%player_name%"
+          split: "&7: "
+          message: "&f{message}"
+      'skyblock':
+        components:
+          server: "&7[&a{server_name}&7] "
+          channel: "&7[&a{channel_name%}&7] "
+          rank: "&7[%luckperms_prefix%&7] "
+          name: "&7%player_name%"
+          split: "&7: "
+          message: "&f{message}"
+  'owner':
+    weight: 1
+    formats:
+      'default':
+        # You can name a component anything you want, as long as it is unique.
+        # The format will build the message in the order of the components.
+        components:
+          server: "&7[&a{server_name}&7] "
+          channel: "&7[&a{channel_name}&7] "
+          rank: "&7[%luckperms_prefix%&7] "
+          name: "&7%player_name%"
+          split: "&7: "
+          message: "&b{message}"
+      'skyblock':
+        components:
+          server: "&7[&a{server_name}&7] "
+          channel: "&7[&a{channel_name%}&7] "
+          rank: "&7[%luckperms_prefix%&7] "
+          name: "&7%player_name%"
+          split: "&7: "
+          message: "&b{message}"
+announcements:
+  require-confirm: true # whether the player must confirm the announcement.
+  specify-server: true # whether the player must specify a server (or pair) to send the announcement to.
+  center: true # whether the announcement will be centered.
+  lines: # the lines of the announcement.
+    - '&c&lANNOUNCEMENT'
+    - '&7%message%' #the message will be split into multiple lines if it is too long.
+

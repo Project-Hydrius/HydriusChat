@@ -1,0 +1,26 @@
+# Plugin
+prefix: "&8[&bChat&8] "
+invalid-usage: "&cInvalid usage. Correct usage: &e{usage}"
+# Channels
+channel-join: "&fYou have joined the &b{channel} &fchannel."
+channel-leave: "&fYou have left the &e{channel} &fchannel."
+channel-switch: "&fYou have switched to the &e{channel} &fchannel."
+channel-create: "&fYou have created the &e{channel} &fchannel."
+channel-delete: "&fYou have deleted the &e{channel} &fchannel."
+channel-gain-access: "&fYou have gained access to the &e{channel} &fchannel."
+channel-lost-access: "&cYou have lost access to the &e{channel} &cchannel."
+channel-not-found: "&cThe channel &e{channel} &cwas not found."
+channel-already-exists: "&cThe channel &e{channel} &calready exists."
+channel-no-permission: "&cYou do not have permission to join the &e{channel} &cchannel."
+channel-set-password: "&fYou have set the password for the &e{channel} &fchannel."
+channel-removed-password: "&fYou have removed the password for the &e{channel} &fchannel."
+channel-password-incorrect: "&cThe password you entered was incorrect."
+channel-password-required: "&cThe &e{channel} &cchannel requires a password to join."
+channel-info:
+  - "&aName: &e{channel}"
+  - "&aCross-Server: &e{cross-server}"
+  - "&aConnected: &e{playersInChannel}"
+  - "&aOwners: &e{ownerList}"
+# Misc
+no-permission: "&cYou do not have permission to do that."
+no-console: "&cYou cannot use this command from the console."
