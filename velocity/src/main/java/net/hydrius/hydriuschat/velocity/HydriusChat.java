@@ -10,6 +10,7 @@ import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
 import net.hydrius.hydriuschat.velocity.command.ChannelCommand;
+import net.hydrius.hydriuschat.velocity.command.DefaultCommand;
 import net.hydrius.hydriuschat.velocity.command.PrivateMessageCommand;
 import net.hydrius.hydriuschat.velocity.config.Locale;
 import net.hydrius.hydriuschat.velocity.listener.PluginMessageListener;
@@ -78,6 +79,7 @@ public class HydriusChat {
         proxyServer.getChannelRegistrar().register(MinecraftChannelIdentifier.from("hydriuschat:main"));
 
         CommandManager commandManager = proxyServer.getCommandManager();
+        commandManager.register(commandManager.metaBuilder("hydriuschat").aliases("chat").build(), new DefaultCommand(this));
         commandManager.register(commandManager.metaBuilder("channel").aliases("channel").build(), new ChannelCommand(this));
         commandManager.register(commandManager.metaBuilder("message").aliases("dm", "w", "whisper", "pm", "msg").build(), new PrivateMessageCommand(this));
 

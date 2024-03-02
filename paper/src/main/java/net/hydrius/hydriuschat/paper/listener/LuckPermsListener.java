@@ -35,6 +35,7 @@ public class LuckPermsListener implements Listener {
         out.writeUTF(channel);
 
         Player player = Bukkit.getPlayer(UUID.fromString(event.getTarget().getIdentifier().getName()));
+        if (player == null) return;
         player.sendPluginMessage(plugin, "hydriuschat:main", out.toByteArray());
     }
 
@@ -48,9 +49,8 @@ public class LuckPermsListener implements Listener {
         out.writeUTF(channel);
 
         Player player = Bukkit.getPlayer(UUID.fromString(event.getTarget().getIdentifier().getName()));
+        if (player == null) return;
         player.sendPluginMessage(plugin, "hydriuschat:main", out.toByteArray());
     }
-
-    // Make sure to add a null check if the permission is removed/added from an offline player
 
 }

@@ -1,5 +1,7 @@
 package net.hydrius.hydriuschat.velocity.util.containers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class ChannelGroup {
@@ -14,6 +16,8 @@ public class ChannelGroup {
 
     private UUID owner;
     private String pin;
+
+    private final List<UUID> subscribers = new ArrayList<>();
 
     public ChannelGroup(String id, String name, String alias, String permission, String color, boolean isCrossServer, boolean requiresPermission, UUID owner, String pin) {
         this.id = id;
@@ -106,6 +110,18 @@ public class ChannelGroup {
 
     public boolean hasPin() {
         return pin != null;
+    }
+
+    public List<UUID> getSubscribers() {
+        return subscribers;
+    }
+
+    public void addSubscriber(UUID uuid) {
+        subscribers.add(uuid);
+    }
+
+    public void removeSubscriber(UUID uuid) {
+        subscribers.remove(uuid);
     }
 
 }

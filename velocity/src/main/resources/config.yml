@@ -5,6 +5,9 @@ settings:
   allow-channel-creation: true # allow players to create channels
   allow-channel-joining: true # allow players to join channels
   allow-channel-leaving: true # allow players to leave channels
+  allow-channel-deletion: true # allow players to delete channels
+  allow-channel-passwords: true # allow players to set passwords on channels
+  autojoin-message-delay: 3 # the delay in seconds before the player is sent the autojoin message.
 
 # Database settings
 database:
@@ -26,9 +29,9 @@ channels:
     color: '&e' # the color of the channel name.
     cross-server: true # whether the channel is cross-server.
     requires-permission: false # whether the player must have the permission to join the channel.
-  'server':
-    name: 'Server'
-    alias: 'L'
+  'world':
+    name: 'World'
+    alias: 'W'
     color: '&a'
     cross-server: false
     requires-permission: false
@@ -64,11 +67,14 @@ banned-channel-names:
   - 'raid'
   - 'raids'
 
-# or called global-pairs, this is a list of servers that will be sent the message depending on the type of server the player is on.
+# Or called global-pairs, this is a list of servers that will be sent the message depending on the type of server the player is on.
 # if the player is in hub and sends a message, the message will be sent to the servers in the hub group. If you are using pterodactyl or
 # manage a cluster of servers, you should list the range of ports here.
 # Using localhost or 127.0.0.1 will just assume the address of the server the player is on.
 # So if you are using a host and cannot control addresses, you should use the different host addresses instead of localhost.
+# The way the plugin searches for eligible servers is by checking if the server pair name is in the server name.
+# This means you must name your servers in a way that the plugin can identify the server pair.
+pair-splitter: '-' # the character that splits the name and the server number. Ex. hub-1, hub-2, hub-3, etc. #The last appearance of the pair splitter will be used to split the server name and the server number.
 pairs:
   'hub':
     - '127.0.0.1:25565'

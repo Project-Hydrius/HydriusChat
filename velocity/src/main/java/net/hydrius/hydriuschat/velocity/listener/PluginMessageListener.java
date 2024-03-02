@@ -40,7 +40,7 @@ public class PluginMessageListener {
                 break;
             case "RemoveChannel":
                 plugin.getChatManager().getChatPlayer(player.getUniqueId()).removeChannel(channel);
-                player.sendMessage(Component.text(Locale.PREFIX + Locale.CHANNEL_LOSE_ACCESS.replace("{channel}", channel)));
+                player.sendMessage(Component.text(Locale.PREFIX + Locale.CHANNEL_LOST_ACCESS.replace("{channel}", channel)));
                 break;
         }
     }

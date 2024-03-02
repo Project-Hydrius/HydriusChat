@@ -20,11 +20,14 @@ public class ChatManager {
     private final HashMap<String, FormatGroup> chatGroups = new HashMap<>();
     private final HashMap<String, ServerPair> globalPairs = new HashMap<>();
 
+    private final String pairSplitter;
+
     public ChatManager(HydriusChat plugin) {
         this.plugin = plugin;
         buildChannels();
         buildGroups();
         buildPairs();
+        this.pairSplitter = plugin.getConfig().getNode("pair-splitter").getString();
     }
 
     // ChatPlayer methods
@@ -66,6 +69,10 @@ public class ChatManager {
         return globalPairs;
     }
 
+    public String getPairSplitter() {
+        return pairSplitter;
+    }
+
     public FormatGroup getChatGroupByUUID(UUID uuid) {
         String group = "default";
         int weight = 0;
@@ -88,7 +95,7 @@ public class ChatManager {
 
     private void buildChannels() {
         plugin.getConfig().getNode("channels").getChildrenMap().forEach((key, value) -> {
-            String id = key.toString();
+            String id = key.toString().toLowerCase();
             String name = value.getNode("name").getString();
             String alias = value.getNode("alias").getString();
             String permission = value.getNode("permission").getString();
