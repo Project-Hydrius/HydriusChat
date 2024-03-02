@@ -1,0 +1,4 @@
+name: HydriusChat
+version: '${project.version}'
+main: net.hydrius.hydriuschat.paper.HydriusChat
+api-version: '1.20'
